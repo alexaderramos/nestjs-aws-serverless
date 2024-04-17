@@ -1,10 +1,8 @@
+import { CONFIG_DATABASE } from './shared/infrastructure/config-database';
+import { UsersModule } from './users/users.module';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [CONFIG_DATABASE(), UsersModule],
 })
 export class AppModule {}
