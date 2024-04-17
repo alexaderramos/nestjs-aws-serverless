@@ -14,7 +14,7 @@ export class UserUseCaseService implements IUseCaseUserService {
     const users = await this.userRepository.getAllUsers();
     return users.map((user) => user);
   }
-  async saveUser(newUser: any): Promise<IResponse> {
+  async saveUser(newUser: UserDto): Promise<IResponse> {
     await this.userRepository.saveUser(newUser);
     return {
       message: 'User saved successfully',

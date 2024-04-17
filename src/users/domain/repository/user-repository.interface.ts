@@ -1,6 +1,9 @@
-import { UserRepositoryModel } from '../models/user.model';
+import {
+  SaveUserRespositoryModel,
+  UserRepositoryModel,
+} from '../models/user.model';
 
 export interface ICrudUserRepository {
   getAllUsers(): Promise<UserRepositoryModel[]>;
-  saveUser(newUser: UserRepositoryModel): Promise<any>;
+  saveUser(newUser: SaveUserRespositoryModel): Promise<any>;
 }

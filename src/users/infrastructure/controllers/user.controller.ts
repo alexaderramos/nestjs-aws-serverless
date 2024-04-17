@@ -1,4 +1,4 @@
-import { Controller, Get, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
 import {
   IResponse,
   IUseCaseUserService,
@@ -19,7 +19,7 @@ export class UserController {
   }
 
   @Post()
-  saveUser(newUser: UserDto): Promise<IResponse> {
+  saveUser(@Body() newUser: UserDto): Promise<IResponse> {
     return this._userService.saveUser(newUser);
   }
 }
