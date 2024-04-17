@@ -2,10 +2,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 export const CONFIG_DATABASE = () =>
   TypeOrmModule.forRoot({
     type: 'mysql',
-    host: 'localhost',
+    host: 'serveless.conwlmo1rdqe.us-east-1.rds.amazonaws.com',
     port: 3306,
-    username: 'root',
-    password: '',
-    database: 'serverless',
+    username: 'admin',
+    password: 'LMnxFHN52vHaGZXOmHu6',
+    database: 'serveless',
     autoLoadEntities: true,
   });

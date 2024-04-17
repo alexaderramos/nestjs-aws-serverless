@@ -1,0 +1,23 @@
+service: serverless-nestjs-backend
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+  - serverless-jetpack
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  
+
+functions:
+  main:
+    handler: dist/main.handler
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'

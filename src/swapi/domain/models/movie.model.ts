@@ -1,4 +1,4 @@
-export interface Movie {
+export interface MovieModel {
   titulo: string;
   id_episodio: number;
   texto_apertura: string;
