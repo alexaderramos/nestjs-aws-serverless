@@ -19,7 +19,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('api_')
     .addServer(
-      'hhtps://a5sgrg6mii.execute-api.us-east-1.amazonaws.com/dev',
+      'htps://a5sgrg6mii.execute-api.us-east-1.amazonaws.com/dev',
       'AWS Lambda',
     )
     .build();
