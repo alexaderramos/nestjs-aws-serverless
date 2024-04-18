@@ -1,12 +1,9 @@
+import { IResponse } from './../../application/user-use-case.interface';
 import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
-import {
-  IResponse,
-  IUseCaseUserService,
-} from 'src/users/application/user-use-case.interface';
+import { IUseCaseUserService } from 'src/users/application/user-use-case.interface';
 import { UserUseCaseService } from 'src/users/application/user-use-case.service';
 import { UserDto } from '../dto/user.dto';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { UserEntity } from 'src/shared/domain/entities/user.entity';
 
 @Controller('users')
 export class UserController {
@@ -19,7 +16,7 @@ export class UserController {
   @ApiOperation({ summary: 'Listar todos los usuarios' })
   @ApiResponse({
     status: 200,
-    type: UserEntity,
+    type: UserDto,
     isArray: true,
   })
   getAllUsers(): Promise<UserDto[]> {
@@ -31,7 +28,7 @@ export class UserController {
   @ApiResponse({
     status: 201,
     description: 'The record has been successfully created.',
-    type: UserEntity,
+    type: UserDto,
   })
   @ApiBody({ type: UserDto })
   saveUser(@Body() newUser: UserDto): Promise<IResponse> {

@@ -3,12 +3,15 @@ import serverlessExpress from '@codegenie/serverless-express';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Callback, Context, Handler } from 'aws-lambda';
+import { ValidationPipe } from '@nestjs/common';
 
 let server: Handler;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { logger: ['error'] });
 
+  // validation
+  app.useGlobalPipes(new ValidationPipe());
   // swagger
   const config = new DocumentBuilder()
     .setTitle('Api test')
