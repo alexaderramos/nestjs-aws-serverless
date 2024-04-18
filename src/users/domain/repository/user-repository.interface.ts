@@ -6,4 +6,5 @@ import {
 export interface ICrudUserRepository {
   getAllUsers(): Promise<UserRepositoryModel[]>;
   saveUser(newUser: SaveUserRespositoryModel): Promise<any>;
+  getUserById(id: number): Promise<UserRepositoryModel>;
 }

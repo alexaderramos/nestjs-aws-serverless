@@ -4,6 +4,7 @@ import {
 } from '../dto/user-repository.dto';
 
 export interface IOrmUserRepository {
-  getAllProducts(): Promise<IGetUserRepositoryDto[]>;
-  saveProduct(newProduct: IUserRepositoryDto): Promise<void>;
+  getAllUsers(): Promise<IGetUserRepositoryDto[]>;
+  saveUser(newProduct: IUserRepositoryDto): Promise<void>;
+  getUserById(id: number): Promise<IGetUserRepositoryDto>;
 }

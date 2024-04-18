@@ -16,12 +16,15 @@ export class OrmUserRepository
     super(UserEntity, dataSource.createEntityManager());
   }
 
-  async saveProduct(newProduct: IUserRepositoryDto): Promise<void> {
-    await this.save(newProduct);
+  async saveUser(newUser: IUserRepositoryDto): Promise<void> {
+    await this.save(newUser);
   }
 
-  async getAllProducts(): Promise<IGetUserRepositoryDto[]> {
-    //TODO
+  async getAllUsers(): Promise<IGetUserRepositoryDto[]> {
     return await this.find();
+  }
+
+  async getUserById(id: number): Promise<IGetUserRepositoryDto> {
+    return await this.findOneBy({ id: id });
   }
 }

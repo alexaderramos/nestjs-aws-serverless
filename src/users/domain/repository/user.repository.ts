@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { ICrudUserRepository } from './user-repository.interface';
 import {
   SaveUserRespositoryModel,
@@ -15,7 +15,7 @@ export class UserRepository implements ICrudUserRepository {
   ) {}
 
   async getAllUsers(): Promise<UserRepositoryModel[]> {
-    const allUsers = await this.ormUserRepository.getAllProducts();
+    const allUsers = await this.ormUserRepository.getAllUsers();
     return allUsers.map((user) => {
       return {
         id: user.id,
@@ -25,6 +25,19 @@ export class UserRepository implements ICrudUserRepository {
     });
   }
   async saveUser(newUser: SaveUserRespositoryModel): Promise<void> {
-    await this.ormUserRepository.saveProduct(newUser);
+    await this.ormUserRepository.saveUser(newUser);
+  }
+
+  async getUserById(id: number): Promise<UserRepositoryModel> {
+    try {
+      const user = await this.ormUserRepository.getUserById(id);
+      return {
+        id: user.id,
+        name: user.name,
+        lastName: user.lastName,
+      };
+    } catch (error) {
+      throw new NotFoundException('User not found');
+    }
   }
 }
