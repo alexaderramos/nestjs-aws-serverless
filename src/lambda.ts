@@ -18,6 +18,10 @@ async function bootstrap() {
     .setDescription('The API description')
     .setVersion('1.0')
     .addTag('api_')
+    .addServer(
+      'hhtps://a5sgrg6mii.execute-api.us-east-1.amazonaws.com/dev',
+      'AWS Lambda',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
